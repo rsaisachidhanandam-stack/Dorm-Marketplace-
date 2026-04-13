@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dorm Marketplace Capstone</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <header>
+        <h1>Dorm Marketplace</h1>
+        <p class="subtitle">Campus-only listings with safe claim handling.</p>
+      </header>
+
+      <section class="panel">
+        <h2>Create Listing</h2>
+        <form id="listing-form">
+          <label>
+            Item title
+            <input id="title" name="title" required maxlength="60" />
+          </label>
+          <label>
+            Category
+            <input id="category" name="category" required maxlength="30" />
+          </label>
+          <label>
+            Price (leave empty for free)
+            <input
+              id="price"
+              name="price"
+              type="number"
+              min="0"
+              step="0.01"
+              placeholder="0.00"
+            />
+          </label>
+          <label>
+            Pickup note
+            <input
+              id="pickupNote"
+              name="pickupNote"
+              required
+              maxlength="80"
+              placeholder="Hostel Gate A at 6pm"
+            />
+          </label>
+          <button type="submit">Add Listing</button>
+        </form>
+      </section>
+
+      <section class="panel">
+        <h2>Marketplace</h2>
+        <p class="hint">
+          Claim timeout is 60s for demo. Use two different buyer names to test
+          claim collision.
+        </p>
+        <div id="items-root" class="items-root"></div>
+      </section>
+    </main>
+
+    <template id="item-template">
+      <article class="item-card">
+        <h3 class="item-title"></h3>
+        <p class="item-meta"></p>
+        <p class="item-pickup"></p>
+        <p class="item-status"></p>
+
+        <div class="action-group buyer-actions">
+          <input class="buyer-name" placeholder="Your name" maxlength="30" />
+          <button class="claim-btn">Claim Item</button>
+          <button class="confirm-btn">Confirm Handoff</button>
+        </div>
+
+        <div class="action-group seller-actions">
+          <button class="sold-btn">Mark as Sold (Seller Override)</button>
+          <button class="remove-btn">Force Remove Listing</button>
+        </div>
+      </article>
+    </template>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
